@@ -1,0 +1,22 @@
+
+
+spring:
+  datasource:
+    url: jdbc:postgresql://35.234.23.230:5432/test_project
+    username: postgres
+    password: 2JxqiawwPnHnH3ly
+
+
+  jpa:
+    generate-ddl: true
+    open-in-view: true
+    properties:
+      hibernate:
+        #format_sql: true
+        ddl-auto: create
+        show-sql: true
+        default_schema: public
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          time_zone: GMT+8
+
