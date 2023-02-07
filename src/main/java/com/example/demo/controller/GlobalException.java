@@ -13,6 +13,6 @@ public class GlobalException {
     public Object handleException(Exception e, HttpServletResponse response, HttpServletRequest request) {
         e.printStackTrace();
         System.out.println("get exception");
-        return "ERROR";
+        return "Global ERROR";
     }
 }

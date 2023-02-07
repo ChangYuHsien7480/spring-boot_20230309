@@ -39,7 +39,10 @@ public class TestController {
     @DeleteMapping("/deleteById_TestRepo")
     public Integer deleteById_TestRepo(@RequestParam Integer id)throws Exception{return this.testService.deleteById_TestRepo(id);}
 
-
+    @PostMapping("/insertUserInfo_TestRepo")
+    public String insertUserInfo(@RequestParam String name){
+        return this.testService.insertUserInfo(name);
+    }
 
 //    @GetMapping("/hello")
 //    public Map<String, Object> helloJava() {

@@ -44,7 +44,7 @@ public class TestRepo {
                     .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP)
                     .setParameter("id", id).getSingleResult();
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
             return null;
         }
     }
@@ -65,5 +65,22 @@ public class TestRepo {
             return 500;
         }
         return 1;
+    }
+
+    @Transactional
+    public String insertUserInfo(String name){
+        String queryStr= """
+                INSERT INTO user_info_test (name) 
+                select name 
+                from user_info_test
+                """;
+        try{
+            this.entityManager.createNativeQuery(queryStr).unwrap(NativeQueryImpl.class)
+                    .executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Insert Error";
+        }
+        return "success";
     }
 }

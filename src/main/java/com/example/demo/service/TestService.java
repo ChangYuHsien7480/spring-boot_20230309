@@ -78,11 +78,17 @@ public class TestService {
             // 做一些很酷的事
             return  null;
         }
-        return 2;
+        return 1;
     }
 
     //delete by id <- testRepo
     public Integer deleteById_TestRepo(Integer id){
         return this.testRepo.deleteById_TestRepo(id);
+    }
+
+    //insert user info <- testRepo
+    public String insertUserInfo(String name){
+        this.testRepo.insertUserInfo(name);
+        return "success";
     }
 }
