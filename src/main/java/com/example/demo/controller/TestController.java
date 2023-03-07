@@ -44,33 +44,4 @@ public class TestController {
         return this.testService.insertUserInfo(name);
     }
 
-//    @GetMapping("/hello")
-//    public Map<String, Object> helloJava() {
-//        TestObj testObj = new TestObj();
-//        testObj.setGogo("gogogogogo");
-//        return Map.of("hello", testObj);
-//    }
-//
-//    public static class TestObj {
-//        private String gogo;
-//        private String haha;
-//
-//        public String getGogo() {
-//            return gogo;
-//        }
-//
-//        public TestObj setGogo(String gogo) {
-//            this.gogo = gogo;
-//            return this;
-//        }
-//
-//        public String getHaha() {
-//            return haha;
-//        }
-//
-//        public void setHaha(String haha) {
-//            this.haha = haha;
-//        }
-//    }
-
 }
