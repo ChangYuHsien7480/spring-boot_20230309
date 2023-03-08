@@ -27,7 +27,7 @@ public class TestController2 {
     private CalucateDataService calucateDataService;
 
     @PostMapping("/createData")
-    public CalcuateData createData(@RequestBody CalcuateData calcuateData){
+    public CalcuateData createData(@RequestBody CalcuateData calcuateData) throws JsonProcessingException {
         return this.calucateDataService.createData(calcuateData);
     }
     @GetMapping("/findAll")
@@ -35,21 +35,8 @@ public class TestController2 {
         return this.calucateDataService.findAll();
     }
 
-    //public
-    @GetMapping("/test")
-    public Map<String, Object> test () throws JsonProcessingException {
-        RestTemplate restTemplate = new RestTemplate();
-        String url = String.format("https://tw.rter.info/capi.php");
-        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET,null, String.class);
-        String jsonStr="";
-        jsonStr = responseEntity.getBody();
-//        Json jsonpObject = new JSONPObject();
-        Map<String, Object> resMap = new ObjectMapper().readValue(jsonStr, Map.class);
-        Map<String, Map<String,Object>> usdtwd = (Map<String, Map<String,Object>>) resMap.get("USDUSD");
-        Map<String, Map<String,Object>> items = (Map<String, Map<String,Object>>) resMap.get("USDTWD");
-        System.out.println("test==="+items.get("Exrate"));
-        System.out.println(jsonStr);
-
-        return items.get("Exrate");
-    }
+//    @GetMapping("/test")
+//    public Map<String, Object> test () throws JsonProcessingException {
+//        return this.calucateDataService;
+//    }
 }

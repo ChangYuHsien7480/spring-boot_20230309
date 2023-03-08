@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class RateHelper {
-    public static Object getRate(String str) throws JsonProcessingException {
+    public static String getRate(String str) throws JsonProcessingException {
         List<Map<String, Object>> calcuateData = new ArrayList<>();
 
         RestTemplate restTemplate = new RestTemplate();
@@ -27,13 +27,12 @@ public class RateHelper {
         jsonStr = responseEntity.getBody();
         System.out.println(jsonStr);
         Map<String, Object> resMap = new ObjectMapper().readValue(jsonStr, Map.class);
-        Map<String, Map<String,Object>> usdtwd = (Map<String, Map<String,Object>>) resMap.get("USDUSD");
         Map<String, Map<String,Object>> items = (Map<String, Map<String,Object>>) resMap.get("USD" + str);
 
         Object obj = items.get("Exrate");
 
 
 
-        return obj;
+        return obj.toString();
     }
 }
