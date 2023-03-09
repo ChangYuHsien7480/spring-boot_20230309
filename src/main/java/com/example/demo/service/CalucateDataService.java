@@ -27,14 +27,19 @@ public class CalucateDataService {
     public CalcuateData createData(CalcuateData calcuateData) throws JsonProcessingException {
         calcuateData = calcuateData.setId(null);
         String rate = RateHelper.getRate(calcuateData.getCurrency());
-
+        Double discount = calcuateData.getDiscount();
         Double usdRate = 30.0, calRate = Double.valueOf(rate)/usdRate ,resPrice = calcuateData.getPrice();
         if (calcuateData.getCurrency()=="TWD"){
-            calcuateData = calcuateData.setResult(resPrice);
+            calcuateData = calcuateData.setResult(resPrice-discount);
+            calcuateData = calcuateData.setRate(1.0);
+        }else if (calcuateData.getCurrency()=="USD"){
+            rate = RateHelper.getRate("TWD");
+            calcuateData = calcuateData.setResult((resPrice-discount)*Double.valueOf(rate));
+            calcuateData = calcuateData.setRate(Double.valueOf(rate));
         }else{
-            calcuateData = calcuateData.setResult(resPrice*calRate);
+            calcuateData = calcuateData.setResult((resPrice-discount)*calRate);
+            calcuateData = calcuateData.setRate(calRate);
         }
-        calcuateData = calcuateData.setRate(Double.valueOf(rate));
 
         this.calcuateDataRepository.saveAndFlush(calcuateData);
         return calcuateData;
