@@ -13,7 +13,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-
+// Failed to start bean 'documentationPluginsBootstrapper'; nested exception is
+// java.lang.NullPointerException: Cannot invoke
+// "org.springframework.web.servlet.mvc.condition.PatternsRequestCondition.toString()"
+// because the return value of
+// "springfox.documentation.spi.service.contexts.Orderings.patternsCondition(springfox.documentation.RequestHandler)"
+// is null
     @Bean
     public Docket swaggerSetting() {
         return new Docket(DocumentationType.SWAGGER_2)
