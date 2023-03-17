@@ -19,6 +19,8 @@ import java.util.Map;
 
 @Service
 public class CalucateDataService {
+
+    //Repository命名可改為Repo
     @Autowired
     private CalcuateDataRepository calcuateDataRepository;
     @Autowired
